@@ -26,3 +26,7 @@
 """
 
 ip = "192.168.3.1"
+ip1, ip2, ip3, ip4 = [e.ljust(10) for e in ip.split('.')]
+ip1b, ip2b, ip3b, ip4b = [bin(int(e)).lstrip('0b').rjust(8, '0').ljust(10) for e in ip.split('.')]
+print(f'{ip1}{ip2}{ip3}{ip4}\n'
+      f'{ip1b}{ip2b}{ip3b}{ip4b}')

@@ -16,3 +16,4 @@
 """
 
 mac = "AAAA:BBBB:CCCC"
+print(''.join([bin(int(e, 16)).lstrip('0b') for e in mac.split(':')]))
