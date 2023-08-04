@@ -30,3 +30,24 @@ Out[1]: '11111111111111111111111111110000'
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 """
+
+ip_input = input('ввод IP-сети: ')
+ip1, ip2, ip3, bufer = ip_input.split('.')
+ip4, mask = bufer.split('/')
+
+ip = ip_input.split('/')[0].split('.')
+ip1, ip2, ip3, ip4 = [e.ljust(10) for e in ip]
+ip1b, ip2b, ip3b, ip4b = [bin(int(e)).lstrip('0b').rjust(8, '0').ljust(10) for e in ip]
+print('Network: ')
+print(f'{ip1}{ip2}{ip3}{ip4}\n'
+      f'{ip1b}{ip2b}{ip3b}{ip4b}')
+print()
+
+mask_row = int(mask) * '1' + (32 - int(mask)) * '0'
+ms = [mask_row[i * 8: (i + 1) * 8] for i in range(4)]
+ms1, ms2, ms3, ms4 = [str(int(e, 2)).ljust(10) for e in ms]  # [e.ljust(10) for e in ms]
+ms1b, ms2b, ms2b, ms4b = [e.ljust(10) for e in ms]  # [bin(int(e)).lstrip('0b').rjust(8, '0').ljust(10) for e in ms]
+print('Mask: ')
+print('/' + str(mask))
+print(f'{ms1}{ms2}{ms3}{ms4}\n'
+      f'{ms1b}{ms2b}{ms2b}{ms4b}')
